@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link, Route, useRouteMatch } from 'react-router-dom';
+// import { Link, Route, useRouteMatch } from 'react-router-dom';
 
-import SinglePage from './SinglePage';
+// import SinglePage from './singlePage';
 
-const About = () => {
-  const { url, path } = useRouteMatch();
+function About() {
+  // const { url, path } = useRouteMatch();
   return (
     <div className="about__content">
-      <ul className="about__list">
+      this is the about page.
+      {/* <ul className="about__list">
         <li>
           <Link to={`${url}/about-app`}>About App</Link>
         </li>
@@ -18,8 +19,9 @@ const About = () => {
       <Route path={`${path}/:slug`}>
         <SinglePage />
       </Route>
+      <Outlet /> */}
     </div>
   );
-};
+}
 
 export default About;

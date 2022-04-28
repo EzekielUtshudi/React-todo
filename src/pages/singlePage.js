@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-const SinglePage = () => {
+function SinglePage() {
   const aboutData = [
     {
       slug: 'about-app',
@@ -25,5 +25,5 @@ const SinglePage = () => {
       <p>{description}</p>
     </div>
   );
-};
+}
 export default SinglePage;

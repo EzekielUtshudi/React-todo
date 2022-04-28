@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 
-const Navbar = () => {
+function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const links = [
@@ -49,5 +49,5 @@ const Navbar = () => {
       </ul>
     </nav>
   );
-};
+}
 export default Navbar;

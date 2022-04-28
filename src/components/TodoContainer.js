@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import TodosList from './TodoList';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import Navbar from './Navbar';
 
-import About from '../pages/About';
-import NotMatch from '../pages/NotMatch';
+import About from '../pages/about';
+import NotMatch from '../pages/notMatch';
 
 function getInitialTodos() {
   const temp = localStorage.getItem('todos');
@@ -15,7 +15,7 @@ function getInitialTodos() {
   return { todos: savedTodos || [] };
 }
 
-const TodoContainer = () => {
+function TodoContainer() {
   const [state, setState] = useState(getInitialTodos);
 
   useEffect(() => {
@@ -60,29 +60,49 @@ const TodoContainer = () => {
   return (
     <>
       <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <div className="container">
-            <div className="inner">
-              <Header />
-              <InputTodo addTodoProps={addTodoItem} />
-              <TodosList
-                todos={state.todos}
-                handleChangeProps={handleChange}
-                deleteTodoProps={delTodo}
-                setUpdate={setUpdate}
-              />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={(
+            <div className="container">
+              <div className="inner">
+                <Header />
+                <InputTodo addTodoProps={addTodoItem} />
+                <TodosList
+                  todos={state.todos}
+                  handleChangeProps={handleChange}
+                  deleteTodoProps={delTodo}
+                  setUpdate={setUpdate}
+                />
+              </div>
             </div>
-          </div>
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="*">
-          <NotMatch />
-        </Route>
-      </Switch>
+          )}
+        />
+
+        <Route
+          exact
+          path="/"
+          element={(
+            <div className="container">
+              <div className="inner">
+                <Header />
+                <InputTodo addTodoProps={addTodoItem} />
+                <TodosList
+                  todos={state.todos}
+                  handleChangeProps={handleChange}
+                  deleteTodoProps={delTodo}
+                  setUpdate={setUpdate}
+                />
+              </div>
+            </div>
+          )}
+        />
+        <Route path="/about" element={<About />} />
+
+        <Route path="*" element={<NotMatch />} />
+      </Routes>
     </>
   );
-};
+}
 export default TodoContainer;
